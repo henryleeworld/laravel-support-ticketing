@@ -93,7 +93,7 @@
                     </table>
                     <form action="{{ route('tickets.storeComment', $ticket->id) }}" method="POST">
                         @csrf
-                        <div class="form-group">
+                        <div class="mb-0">
                             <label for="comment_text">留下評論</label>
                             <textarea class="form-control @error('comment_text') is-invalid @enderror" id="comment_text" name="comment_text" rows="3" required></textarea>
                             @error('comment_text')
@@ -102,7 +102,7 @@
                                 </span>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary">@lang('global.submit')</button>
+                        <button type="submit" class="btn btn-primary mt-3">@lang('global.submit')</button>
                     </form>
                 </div>
             </div>

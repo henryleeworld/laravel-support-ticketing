@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Ticket;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
+use App\Models\Ticket;
 use App\Notifications\CommentEmailNotification;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
@@ -49,7 +49,7 @@ class TicketController extends Controller
             $ticket->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('attachments');
         }
 
-        return redirect()->back()->withStatus('Your ticket has been submitted, we will be in touch. You can view ticket status <a href="'.route('tickets.show', $ticket->id).'">here</a>');
+        return redirect()->back()->withStatus(__('Your ticket has been submitted, we will be in touch. You can view ticket status ') . '<a href="'.route('tickets.show', $ticket->id).'">' . __('here') . '</a>');
     }
 
     /**

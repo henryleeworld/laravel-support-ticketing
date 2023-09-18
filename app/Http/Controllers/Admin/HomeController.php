@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Ticket;
 use Gate;
 use Symfony\Component\HttpFoundation\Response;
-use App\Ticket;
 
 class HomeController
 {

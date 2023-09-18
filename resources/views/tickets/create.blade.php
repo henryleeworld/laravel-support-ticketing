@@ -16,7 +16,7 @@
                     <form method="POST" action="{{ route('tickets.store') }}" enctype="multipart/form-data">
                         @csrf
 
-                        <div class="form-group row">
+                        <div class="row mb-3">
                             <label for="author_name" class="col-md-4 col-form-label text-md-right">你的名字</label>
 
                             <div class="col-md-6">
@@ -30,7 +30,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="row mb-3">
                             <label for="author_email" class="col-md-4 col-form-label text-md-right">你的電子郵件</label>
 
                             <div class="col-md-6">
@@ -44,7 +44,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="row mb-3">
                             <label for="title" class="col-md-4 col-form-label text-md-right">@lang('cruds.ticket.fields.title')</label>
 
                             <div class="col-md-6">
@@ -58,7 +58,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="row mb-3">
                             <label for="content" class="col-md-4 col-form-label text-md-right">@lang('cruds.ticket.fields.content')</label>
 
                             <div class="col-md-6">
@@ -71,7 +71,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="row mb-3">
                             <label for="attachments" class="col-md-4 col-form-label text-md-right">{{ trans('cruds.ticket.fields.attachments') }}</label>
 
                             <div class="col-md-6">
@@ -86,7 +86,7 @@
                             @enderror
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     @lang('global.submit')

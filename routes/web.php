@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -8,12 +9,11 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', 'TicketController@create');
+Route::get('/', [TicketController::class, 'create']);
 Route::get('/home', function () {
     $route = Gate::denies('dashboard_access') ? 'admin.tickets.index' : 'admin.home';
     if (session('status')) {
@@ -25,11 +25,11 @@ Route::get('/home', function () {
 
 Auth::routes(['register' => false]);
 
-Route::post('tickets/media', 'TicketController@storeMedia')->name('tickets.storeMedia');
-Route::post('tickets/comment/{ticket}', 'TicketController@storeComment')->name('tickets.storeComment');
-Route::resource('tickets', 'TicketController')->only(['show', 'create', 'store']);
+Route::post('tickets/media', [TicketController::class, 'storeMedia'])->name('tickets.storeMedia');
+Route::post('tickets/comment/{ticket}', [TicketController::class, 'storeComment'])->name('tickets.storeComment');
+Route::resource('tickets', TicketController::class)->only(['show', 'create', 'store']);
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'App\Http\Controllers\Admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
